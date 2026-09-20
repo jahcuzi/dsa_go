@@ -4,6 +4,52 @@ import (
 	"testing"
 )
 
+func TestPlusOne(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		digits := []int{1, 2, 3}
+		expected := []int{1, 2, 4}
+		result := plusOne(digits)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+	t.Run("Example 2", func(t *testing.T) {
+		digits := []int{4, 3, 2, 1}
+		expected := []int{4, 3, 2, 2}
+		result := plusOne(digits)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+
+	t.Run("Example 3", func(t *testing.T) {
+		digits := []int{9}
+		expected := []int{1, 0}
+		result := plusOne(digits)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+}
+
 func TestMaxProfit(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		prices := []int{7, 1, 5, 3, 6, 4}
