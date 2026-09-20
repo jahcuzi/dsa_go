@@ -1,5 +1,25 @@
 package arrays
 
+func sortedSquares(nums []int) []int {
+	n := len(nums)
+	res := make([]int, n)
+	for i := range nums {
+		nums[i] *= nums[i]
+	}
+
+	p, q := 0, n-1
+	for i := n - 1; i >= 0; i-- {
+		if nums[p] > nums[q] {
+			res[i] = nums[p]
+			p++
+		} else {
+			res[i] = nums[q]
+			q--
+		}
+	}
+	return res
+}
+
 func fib(n int) int {
 	if n == 0 {
 		return 0

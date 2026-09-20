@@ -4,6 +4,37 @@ import (
 	"testing"
 )
 
+func TestSortedSquares(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		nums := []int{-4, -1, 0, 3, 10}
+		expected := []int{0, 1, 9, 16, 100}
+		result := sortedSquares(nums)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+	t.Run("Example 2", func(t *testing.T) {
+		nums := []int{-7, -3, 2, 3, 11}
+		expected := []int{4, 9, 9, 49, 121}
+		result := sortedSquares(nums)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+}
+
 func TestFib(t *testing.T) {
 	t.Run("example 1", func(t *testing.T) {
 		n := 2
