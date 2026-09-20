@@ -1,5 +1,21 @@
 package arrays
 
+func majorityElement(nums []int) int {
+	majE, majFreq := nums[0], 0
+
+	for _, e := range nums {
+		if e == majE {
+			majFreq++
+		} else {
+			majFreq--
+		}
+		if majFreq == 0 {
+			majE, majFreq = e, 1
+		}
+	}
+	return majE
+}
+
 func pivotIndex(nums []int) int {
 	leftSum, rightSum := 0, 0
 
