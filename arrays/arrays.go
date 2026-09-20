@@ -1,5 +1,16 @@
 package arrays
 
+func fib(n int) int {
+	if n == 0 {
+		return 0
+	}
+	p, c := 0, 1
+	for range n - 1 {
+		p, c = c, c+p
+	}
+	return c
+}
+
 func majorityElement(nums []int) int {
 	majE, majFreq := nums[0], 0
 

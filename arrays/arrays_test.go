@@ -4,6 +4,33 @@ import (
 	"testing"
 )
 
+func TestFib(t *testing.T) {
+	t.Run("example 1", func(t *testing.T) {
+		n := 2
+		expected := 1
+		result := fib(n)
+		if expected != result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("example 2", func(t *testing.T) {
+		n := 3
+		expected := 2
+		result := fib(n)
+		if expected != result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("example 3", func(t *testing.T) {
+		n := 4
+		expected := 3
+		result := fib(n)
+		if expected != result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestMajorityElement(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		arr := []int{3, 2, 3}
