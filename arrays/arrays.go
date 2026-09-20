@@ -1,5 +1,15 @@
 package arrays
 
+func runningSum(nums []int) []int {
+	rs := 0
+	res := []int{}
+	for _, val := range nums {
+		rs += val
+		res = append(res, rs)
+	}
+	return res
+}
+
 func maxProfit2(prices []int) int {
 	//--------^ remove the 2 before submitting
 	total_profit, p := 0, prices[0]

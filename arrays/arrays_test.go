@@ -4,6 +4,51 @@ import (
 	"testing"
 )
 
+func TestRunningSum(t *testing.T) {
+	t.Run("example 1", func(t *testing.T) {
+		arr := []int{1, 2, 3, 4}
+		expected := []int{1, 3, 6, 10}
+		result := runningSum(arr)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+	t.Run("example 2", func(t *testing.T) {
+		arr := []int{1, 1, 1, 1, 1}
+		expected := []int{1, 2, 3, 4, 5}
+		result := runningSum(arr)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+	t.Run("example 3", func(t *testing.T) {
+		arr := []int{3, 1, 2, 10, 1}
+		expected := []int{3, 4, 6, 16, 17}
+		result := runningSum(arr)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+}
+
 func TestMaxProfit2(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		prices := []int{7, 1, 5, 3, 6, 4}
@@ -14,7 +59,7 @@ func TestMaxProfit2(t *testing.T) {
 		}
 	})
 
-	t.Run("Example 1", func(t *testing.T) {
+	t.Run("Example 2", func(t *testing.T) {
 		prices := []int{1, 2, 3, 4, 5}
 		expected := 4
 		result := maxProfit2(prices)
@@ -23,7 +68,7 @@ func TestMaxProfit2(t *testing.T) {
 		}
 	})
 
-	t.Run("Example 1", func(t *testing.T) {
+	t.Run("Example 3", func(t *testing.T) {
 		prices := []int{7, 6, 4, 3, 1}
 		expected := 0
 		result := maxProfit2(prices)
