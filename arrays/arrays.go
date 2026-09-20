@@ -1,5 +1,17 @@
 package arrays
 
+func moveZeroes(nums []int) {
+	p := 0
+	for q := range len(nums) {
+		if nums[p] == 0 && nums[q] != 0 {
+			nums[p], nums[q] = nums[q], nums[p]
+			p++
+		} else if nums[q] == 0 && nums[p] != 0 {
+			p = q
+		}
+	}
+}
+
 func plusOne(digits []int) []int {
 	for i := len(digits) - 1; i >= 0; i-- {
 		if digits[i] < 9 {

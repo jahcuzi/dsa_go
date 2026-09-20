@@ -4,6 +4,41 @@ import (
 	"testing"
 )
 
+func TestMoveZeroes(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		nums := []int{0, 1, 0, 3, 12}
+		expected := []int{1, 3, 12, 0, 0}
+		moveZeroes(nums)
+		result := nums
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+
+	t.Run("Example 2", func(t *testing.T) {
+		nums := []int{0}
+		expected := []int{0}
+		moveZeroes(nums)
+		result := nums
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i := range len(expected) {
+			if result[i] != expected[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+			}
+		}
+	})
+
+}
+
 func TestPlusOne(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		digits := []int{1, 2, 3}
