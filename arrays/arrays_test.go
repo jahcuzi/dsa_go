@@ -4,6 +4,35 @@ import (
 	"testing"
 )
 
+func TestMaxProfit2(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		prices := []int{7, 1, 5, 3, 6, 4}
+		expected := 7
+		result := maxProfit2(prices)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("Example 1", func(t *testing.T) {
+		prices := []int{1, 2, 3, 4, 5}
+		expected := 4
+		result := maxProfit2(prices)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("Example 1", func(t *testing.T) {
+		prices := []int{7, 6, 4, 3, 1}
+		expected := 0
+		result := maxProfit2(prices)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestMoveZeroes(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		nums := []int{0, 1, 0, 3, 12}

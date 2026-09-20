@@ -1,5 +1,19 @@
 package arrays
 
+func maxProfit2(prices []int) int {
+	//--------^ remove the 2 before submitting
+	total_profit, p := 0, prices[0]
+
+	for i := 1; i < len(prices); i++ {
+		e := prices[i]
+		if e > p {
+			total_profit += e - p
+		}
+		p = e
+	}
+	return total_profit
+}
+
 func moveZeroes(nums []int) {
 	p := 0
 	for q := range len(nums) {
