@@ -1,5 +1,21 @@
 package arrays
 
+func pivotIndex(nums []int) int {
+	leftSum, rightSum := 0, 0
+
+	for _, val := range nums {
+		rightSum += val
+	}
+	for i, val := range nums {
+		rightSum -= val
+		if leftSum == rightSum {
+			return i
+		}
+		leftSum += val
+	}
+	return -1
+}
+
 func runningSum(nums []int) []int {
 	rs := 0
 	res := []int{}

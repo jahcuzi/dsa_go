@@ -4,6 +4,38 @@ import (
 	"testing"
 )
 
+func TestPivotIndex(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		arr := []int{1, 7, 3, 6, 5, 6}
+		expected := 3
+		result := pivotIndex(arr)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+
+		}
+	})
+
+	t.Run("Example 2", func(t *testing.T) {
+		arr := []int{1, 2, 3}
+		expected := -1
+		result := pivotIndex(arr)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+
+		}
+	})
+
+	t.Run("Example 3", func(t *testing.T) {
+		arr := []int{2, 1, -1}
+		expected := 0
+		result := pivotIndex(arr)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+
+		}
+	})
+}
+
 func TestRunningSum(t *testing.T) {
 	t.Run("example 1", func(t *testing.T) {
 		arr := []int{1, 2, 3, 4}
