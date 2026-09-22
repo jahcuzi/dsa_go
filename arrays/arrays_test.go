@@ -5,6 +5,42 @@ import (
 	"testing"
 )
 
+func TestRemoveDuplicates(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		arr := []int{1, 1, 2}
+		k := 2
+		r := removeDuplicates(arr)
+		expected := []int{1, 2}
+		result := arr
+		if k != r {
+			t.Errorf("Expected #of distinct elements %v, Got %v", k, r)
+		}
+		for i := range k {
+			if expected[i] != result[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+				return
+			}
+		}
+	})
+
+	t.Run("Example 2", func(t *testing.T) {
+		arr := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+		k := 5
+		r := removeDuplicates(arr)
+		expected := []int{0, 1, 2, 3, 4}
+		result := arr
+		if k != r {
+			t.Errorf("Expected Length %v, Got %v", k, r)
+		}
+		for i := range k {
+			if expected[i] != result[i] {
+				t.Errorf("Expected %v, Got %v", expected, result)
+				return
+			}
+		}
+	})
+}
+
 func TestPascalTriangle(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		n := 5

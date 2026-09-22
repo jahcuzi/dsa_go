@@ -1,5 +1,17 @@
 package arrays
 
+func removeDuplicates(nums []int) int {
+	p := 0
+	for q := range nums {
+		if nums[p] != nums[q] {
+			p++
+			nums[p], nums[q] = nums[q], nums[p]
+		}
+	}
+
+	return p + 1
+}
+
 func generate(numRows int) [][]int {
 	res := [][]int{}
 	prev_row := []int{1}
