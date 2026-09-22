@@ -5,6 +5,26 @@ import (
 	"testing"
 )
 
+func TestProductExceptSelf(t *testing.T) {
+	t.Run("example 1", func(t *testing.T) {
+		arr := []int{1, 2, 3, 4}
+		expected := []int{24, 12, 8, 6}
+		result := productExceptSelf(arr)
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("example 1", func(t *testing.T) {
+		arr := []int{-1, 1, 0, -3, 3}
+		expected := []int{0, 0, 9, 0, 0}
+		result := productExceptSelf(arr)
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func Test3Sum(t *testing.T) {
 	t.Run("example 1", func(t *testing.T) {
 		arr := []int{-1, 0, 1, 2, -1, -4}
