@@ -1,5 +1,31 @@
 package arrays
 
+func generate(numRows int) [][]int {
+	res := [][]int{}
+	prev_row := []int{1}
+	res = append(res, prev_row)
+	if numRows == 1 {
+		return res
+	}
+
+	prev_row = []int{1, 1}
+	res = append(res, prev_row)
+	if numRows == 2 {
+		return res
+	}
+	for range numRows - 2 {
+		cur_row := []int{1}
+		for i := 0; i < len(prev_row)-1; i++ {
+			val := prev_row[i] + prev_row[i+1]
+			cur_row = append(cur_row, val)
+		}
+		cur_row = append(cur_row, 1)
+		res = append(res, cur_row)
+		prev_row = cur_row
+	}
+	return res
+}
+
 func sortedSquares(nums []int) []int {
 	n := len(nums)
 	res := make([]int, n)

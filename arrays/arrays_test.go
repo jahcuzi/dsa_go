@@ -1,8 +1,49 @@
 package arrays
 
 import (
+	"reflect"
 	"testing"
 )
+
+func TestPascalTriangle(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		n := 5
+		expected := [][]int{
+			{1},
+			{1, 1},
+			{1, 2, 1},
+			{1, 3, 3, 1},
+			{1, 4, 6, 4, 1},
+		}
+		result := generate(n)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("Example 1", func(t *testing.T) {
+		n := 1
+		expected := [][]int{
+			{1},
+		}
+		result := generate(n)
+		if len(result) != len(expected) {
+			t.Errorf("Expected Length %v, Got %v", len(expected), len(result))
+			return
+		}
+		for i, row := range result {
+			for j := range row {
+				if result[i][j] != expected[i][j] {
+					t.Errorf("Expected %v, Got %v", expected, result)
+				}
+			}
+		}
+	})
+}
 
 func TestSortedSquares(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
