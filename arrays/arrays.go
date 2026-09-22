@@ -1,5 +1,32 @@
 package arrays
 
+import (
+	"slices"
+)
+
+func merge(intervals [][]int) [][]int {
+
+	slices.SortFunc(intervals, func(a []int, b []int) int {
+		return a[0] - b[0]
+	})
+
+	cur := intervals[0]
+	res := make([][]int, 0, len(intervals))
+
+	for i := 1; i < len(intervals); i++ {
+		temp := intervals[i]
+		if temp[0] <= cur[1] {
+			cur[1] = max(temp[1], cur[1])
+			continue
+		}
+
+		res = append(res, cur)
+		cur = temp
+	}
+	res = append(res, cur)
+	return res
+}
+
 func removeDuplicates(nums []int) int {
 	p := 0
 	for q := range nums {

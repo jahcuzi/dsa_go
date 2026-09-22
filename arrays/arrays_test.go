@@ -5,6 +5,52 @@ import (
 	"testing"
 )
 
+func TestMergeIntervals(t *testing.T) {
+	t.Run("example 1", func(t *testing.T) {
+		arr := [][]int{
+			{1, 3},
+			{2, 6},
+			{8, 10},
+			{15, 18},
+		}
+		expected := [][]int{
+			{1, 6},
+			{8, 10},
+			{15, 18},
+		}
+		result := merge(arr)
+		if !reflect.DeepEqual(expected, result) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("example 2", func(t *testing.T) {
+		arr := [][]int{
+			{1, 4},
+			{4, 5},
+		}
+		expected := [][]int{
+			{1, 5},
+		}
+		result := merge(arr)
+		if !reflect.DeepEqual(expected, result) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("example 3", func(t *testing.T) {
+		arr := [][]int{
+			{4, 7},
+			{1, 4},
+		}
+		expected := [][]int{
+			{1, 7},
+		}
+		result := merge(arr)
+		if !reflect.DeepEqual(expected, result) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestRemoveDuplicates(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		arr := []int{1, 1, 2}
