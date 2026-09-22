@@ -4,6 +4,36 @@ import (
 	"slices"
 )
 
+func threeSum(nums []int) [][]int {
+	res := make([][]int, 0, len(nums))
+	slices.Sort(nums)
+	for i := range nums {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		p, q := i+1, len(nums)-1
+		for p < q {
+			sum := nums[i] + nums[p] + nums[q]
+			if sum == 0 {
+				res = append(res, []int{nums[i], nums[p], nums[q]})
+				q--
+				for p < q && nums[q] == nums[q+1] {
+					q--
+				}
+			}
+			if sum < 0 {
+				p++
+				continue
+			}
+			if sum > 0 {
+				q--
+				continue
+			}
+		}
+	}
+	return res
+}
+
 func merge(intervals [][]int) [][]int {
 
 	slices.SortFunc(intervals, func(a []int, b []int) int {

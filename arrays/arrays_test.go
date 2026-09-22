@@ -5,6 +5,40 @@ import (
 	"testing"
 )
 
+func Test3Sum(t *testing.T) {
+	t.Run("example 1", func(t *testing.T) {
+		arr := []int{-1, 0, 1, 2, -1, -4}
+		expected := [][]int{
+			{-1, -1, 2},
+			{-1, 0, 1},
+		}
+		result := threeSum(arr)
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("example 2", func(t *testing.T) {
+		arr := []int{0, 1, 1}
+		expected := [][]int{}
+		result := threeSum(arr)
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("example 3", func(t *testing.T) {
+		arr := []int{0, 0, 0}
+		expected := [][]int{
+			{0, 0, 0},
+		}
+		result := threeSum(arr)
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestMergeIntervals(t *testing.T) {
 	t.Run("example 1", func(t *testing.T) {
 		arr := [][]int{
