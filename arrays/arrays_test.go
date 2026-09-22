@@ -5,6 +5,37 @@ import (
 	"testing"
 )
 
+func TestSubarraySumK(t *testing.T) {
+
+	t.Run("example 1", func(t *testing.T) {
+		nums := []int{1, 1, 1}
+		k := 2
+		expected := 2
+		result := subarraySum(nums, k)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("example 2", func(t *testing.T) {
+		nums := []int{1, 2, 3}
+		k := 3
+		expected := 2
+		result := subarraySum(nums, k)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("example 3", func(t *testing.T) {
+		nums := []int{1}
+		k := 0
+		expected := 0
+		result := subarraySum(nums, k)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestProductExceptSelf(t *testing.T) {
 	t.Run("example 1", func(t *testing.T) {
 		arr := []int{1, 2, 3, 4}

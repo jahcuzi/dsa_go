@@ -4,6 +4,22 @@ import (
 	"slices"
 )
 
+func subarraySum(nums []int, k int) int {
+	cnt := 0
+	sum := 0
+	sumMap := make(map[int]int)
+
+	sumMap[0] = 1 //prefix sum of 0 -> sum so far - k = 0
+	for _, num := range nums {
+		sum += num
+		if freq, ok := sumMap[sum-k]; ok {
+			cnt += freq
+		}
+		sumMap[sum]++
+	}
+	return cnt
+}
+
 func productExceptSelf(nums []int) []int {
 	n := len(nums)
 	prefix := make([]int, n)
