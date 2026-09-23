@@ -4,6 +4,18 @@ import (
 	"slices"
 )
 
+func rotate(matrix [][]int) {
+	n := len(matrix)
+	for i := range matrix {
+		for j := i + 1; j < n; j++ {
+			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+		}
+	}
+	for i := range matrix {
+		slices.Reverse(matrix[i])
+	}
+}
+
 func maxArea2(height []int) int {
 	//------^ remove 2 before submitting
 	p, q := 0, len(height)-1

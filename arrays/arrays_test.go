@@ -5,6 +5,44 @@ import (
 	"testing"
 )
 
+func TestRotateImage(t *testing.T) {
+	t.Run("example 1", func(t *testing.T) {
+		matrix := [][]int{
+			{1, 2, 3},
+			{4, 5, 6},
+			{7, 8, 9},
+		}
+		expected := [][]int{
+			{7, 4, 1},
+			{8, 5, 2},
+			{9, 6, 3},
+		}
+		rotate(matrix)
+		if !reflect.DeepEqual(expected, matrix) {
+			t.Errorf("Expected %v, Got %v", expected, matrix)
+		}
+	})
+
+	t.Run("example 1", func(t *testing.T) {
+		matrix := [][]int{
+			{5, 1, 9, 11},
+			{2, 4, 8, 10},
+			{13, 3, 6, 7},
+			{15, 14, 12, 16},
+		}
+		expected := [][]int{
+			{15, 13, 2, 5},
+			{14, 3, 4, 1},
+			{12, 6, 8, 9},
+			{16, 7, 10, 11},
+		}
+		rotate(matrix)
+		if !reflect.DeepEqual(expected, matrix) {
+			t.Errorf("Expected %v, Got %v", expected, matrix)
+		}
+	})
+}
+
 func TestContainerWithMostWater(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
