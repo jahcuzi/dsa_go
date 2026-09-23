@@ -5,6 +5,49 @@ import (
 	"testing"
 )
 
+func TestWordSearch(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		board := [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		word := "ABCCED"
+		expected := true
+		result := exist(board, word)
+		if expected && !result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+
+	t.Run("Example 2", func(t *testing.T) {
+		board := [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		word := "SEE"
+		expected := true
+		result := exist(board, word)
+		if expected && !result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("Example 3", func(t *testing.T) {
+		board := [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		word := "ABCB"
+		expected := false
+		result := exist(board, word)
+		if !result && expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestRotateImage(t *testing.T) {
 	t.Run("example 1", func(t *testing.T) {
 		matrix := [][]int{
@@ -23,7 +66,7 @@ func TestRotateImage(t *testing.T) {
 		}
 	})
 
-	t.Run("example 1", func(t *testing.T) {
+	t.Run("example 2", func(t *testing.T) {
 		matrix := [][]int{
 			{5, 1, 9, 11},
 			{2, 4, 8, 10},
@@ -75,7 +118,7 @@ func TestSpiralOrder(t *testing.T) {
 			t.Errorf("Expected %v, Got %v", expected, result)
 		}
 	})
-	t.Run("Example 1", func(t *testing.T) {
+	t.Run("Example 2", func(t *testing.T) {
 		matrix := [][]int{
 			{1, 2, 3, 4},
 			{5, 6, 7, 8},

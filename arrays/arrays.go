@@ -4,6 +4,37 @@ import (
 	"slices"
 )
 
+func exist(board [][]byte, word string) bool {
+	var dfs func([][]byte, int, int, int, string) bool
+	dfs = func(board [][]byte, i int, j int, idx int, word string) bool {
+		if len(word) == idx {
+			return true
+		}
+		if i < 0 || i >= len(board) || j < 0 || j >= len(board[0]) || board[i][j] != word[idx] {
+			return false
+		}
+
+		temp := board[i][j]
+		board[i][j] = '*'
+		idx++
+		found := dfs(board, i+1, j, idx, word) ||
+			dfs(board, i-1, j, idx, word) ||
+			dfs(board, i, j+1, idx, word) ||
+			dfs(board, i, j-1, idx, word)
+		board[i][j] = temp
+		return found
+	}
+
+	for i, row := range board {
+		for j := range row {
+			if board[i][j] == word[0] && dfs(board, i, j, 0, word) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func rotate(matrix [][]int) {
 	n := len(matrix)
 	for i := range matrix {
