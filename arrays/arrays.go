@@ -4,6 +4,35 @@ import (
 	"slices"
 )
 
+func nextPermutation(nums []int) {
+	ind, n := -1, len(nums)
+	//find the breakpoint
+	for i := n - 2; i >= 0; i-- {
+		if nums[i] < nums[i+1] {
+			ind = i
+			break
+		}
+	}
+
+	//no breakpoint
+	if ind == -1 {
+		slices.Reverse(nums)
+		return
+	}
+
+	//swap with smallest number in tail greater than breakpoint
+	for i := n - 1; i > ind; i++ {
+		if nums[i] > nums[ind] {
+			nums[i], nums[ind] = nums[ind], nums[i]
+			break
+		}
+	}
+
+	//reverse the tail
+	slices.Reverse(nums[ind+1:])
+
+}
+
 func subarraySum(nums []int, k int) int {
 	cnt := 0
 	sum := 0

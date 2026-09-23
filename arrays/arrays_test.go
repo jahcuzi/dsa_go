@@ -5,6 +5,33 @@ import (
 	"testing"
 )
 
+func TestNextPermutation(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		nums := []int{1, 2, 3}
+		expected := []int{1, 3, 2}
+		nextPermutation(nums)
+		if !reflect.DeepEqual(nums, expected) {
+			t.Errorf("Expected %v, Got %v", expected, nums)
+		}
+	})
+
+	t.Run("Example 2", func(t *testing.T) {
+		nums := []int{3, 2, 1}
+		expected := []int{1, 2, 3}
+		nextPermutation(nums)
+		if !reflect.DeepEqual(nums, expected) {
+			t.Errorf("Expected %v, Got %v", expected, nums)
+		}
+	})
+	t.Run("Example 3", func(t *testing.T) {
+		nums := []int{1, 1, 5}
+		expected := []int{1, 5, 1}
+		nextPermutation(nums)
+		if !reflect.DeepEqual(nums, expected) {
+			t.Errorf("Expected %v, Got %v", expected, nums)
+		}
+	})
+}
 func TestSubarraySumK(t *testing.T) {
 
 	t.Run("example 1", func(t *testing.T) {
