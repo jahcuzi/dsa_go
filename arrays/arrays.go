@@ -16,8 +16,7 @@ func rotate(matrix [][]int) {
 	}
 }
 
-func maxArea2(height []int) int {
-	//------^ remove 2 before submitting
+func maxArea(height []int) int {
 	p, q := 0, len(height)-1
 	max_area := 0
 	for p < q {
@@ -185,6 +184,24 @@ func merge(intervals [][]int) [][]int {
 	return res
 }
 
+/*=============================Easy===========================
+Easy Problems below
+	26. Remove Duplicates From Sorted Array
+	118. Pascal's Triangle
+	997. Squares of a Sorted Array
+	509. Fibonacci Number
+	169. Majority Element
+	724. Find Pivot Index
+	1480. Running Sum of 1d Array
+	122. Best Time to Buy and Sell Stock II
+	283. Move Zeroes
+	66. Plus One
+	121. Best Time to Buy and Sell Stock
+	1. Two Sum
+==============================================================
+*/
+
+// 26. Remove Duplicates From Sorted Array
 func removeDuplicates(nums []int) int {
 	p := 0
 	for q := range nums {
@@ -197,6 +214,7 @@ func removeDuplicates(nums []int) int {
 	return p + 1
 }
 
+// 118. Pascal's Triangle
 func generate(numRows int) [][]int {
 	res := [][]int{}
 	prev_row := []int{1}
@@ -223,6 +241,7 @@ func generate(numRows int) [][]int {
 	return res
 }
 
+// 997. Squares of a Sorted Array
 func sortedSquares(nums []int) []int {
 	n := len(nums)
 	res := make([]int, n)
@@ -243,6 +262,7 @@ func sortedSquares(nums []int) []int {
 	return res
 }
 
+// 509. Fibonacci Number
 func fib(n int) int {
 	if n == 0 {
 		return 0
@@ -254,6 +274,7 @@ func fib(n int) int {
 	return c
 }
 
+// 169. Majority Element
 func majorityElement(nums []int) int {
 	majE, majFreq := nums[0], 0
 
@@ -270,6 +291,7 @@ func majorityElement(nums []int) int {
 	return majE
 }
 
+// 724. Find Pivot Index
 func pivotIndex(nums []int) int {
 	leftSum, rightSum := 0, 0
 
@@ -286,6 +308,7 @@ func pivotIndex(nums []int) int {
 	return -1
 }
 
+// 1480. Running Sum of 1d Array
 func runningSum(nums []int) []int {
 	rs := 0
 	res := []int{}
@@ -296,6 +319,7 @@ func runningSum(nums []int) []int {
 	return res
 }
 
+// 122. Best Time to Buy and Sell Stock II
 func maxProfit2(prices []int) int {
 	//--------^ remove the 2 before submitting
 	total_profit, p := 0, prices[0]
@@ -310,6 +334,7 @@ func maxProfit2(prices []int) int {
 	return total_profit
 }
 
+// 283. Move Zeroes
 func moveZeroes(nums []int) {
 	p := 0
 	for q := range len(nums) {
@@ -322,6 +347,7 @@ func moveZeroes(nums []int) {
 	}
 }
 
+// 66. Plus One
 func plusOne(digits []int) []int {
 	for i := len(digits) - 1; i >= 0; i-- {
 		if digits[i] < 9 {
@@ -333,6 +359,7 @@ func plusOne(digits []int) []int {
 	return append([]int{1}, digits...)
 }
 
+// 121. Best Time to Buy and Sell Stock
 func maxProfit(prices []int) int {
 	min_price := prices[0]
 	max_profit := 0
@@ -345,6 +372,7 @@ func maxProfit(prices []int) int {
 	return max_profit
 }
 
+// 1. Two Sum
 func twoSum(arr []int, target int) [2]int {
 	idx_map := make(map[int]int)
 	for i := range len(arr) {
@@ -355,19 +383,4 @@ func twoSum(arr []int, target int) [2]int {
 
 	}
 	return [2]int{-1, -1}
-}
-
-func maxArea(height []int) int {
-	p, q := 0, len(height)-1
-	max_area := 0
-	for p < q {
-		area := min(height[p], height[q]) * (q - p)
-		max_area = max(max_area, area)
-		if height[p] > height[q] {
-			q--
-		} else {
-			p++
-		}
-	}
-	return max_area
 }
