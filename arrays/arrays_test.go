@@ -5,6 +5,42 @@ import (
 	"testing"
 )
 
+func TestGameOfLife(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		board := [][]int{
+			{0, 1, 0},
+			{0, 0, 1},
+			{1, 1, 1},
+			{0, 0, 0},
+		}
+		expected := [][]int{
+			{0, 0, 0},
+			{1, 0, 1},
+			{0, 1, 1},
+			{0, 1, 0},
+		}
+		gameOfLife(board)
+		if !reflect.DeepEqual(board, expected) {
+			t.Errorf("Expected %v, Got %v", expected, board)
+		}
+	})
+
+	t.Run("Example 1", func(t *testing.T) {
+		board := [][]int{
+			{1, 1},
+			{1, 0},
+		}
+		expected := [][]int{
+			{1, 1},
+			{1, 1},
+		}
+		gameOfLife(board)
+		if !reflect.DeepEqual(board, expected) {
+			t.Errorf("Expected %v, Got %v", expected, board)
+		}
+	})
+}
+
 func Test3SumClosest(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		nums := []int{-1, 2, 1, -4}

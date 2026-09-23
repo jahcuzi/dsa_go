@@ -5,6 +5,55 @@ import (
 	"slices"
 )
 
+func gameOfLife(board [][]int) {
+	neighbours := func(board [][]int, i int, j int) int {
+		n, m := len(board), len(board[0])
+		dx := []int{-1, -1, -1, 0, 0, 1, 1, 1}
+		dy := []int{-1, 0, 1, -1, 1, -1, 0, 1}
+		cnt := 0
+		for d := range 8 {
+			nx, ny := i+dx[d], j+dy[d]
+			if nx < n && nx >= 0 && ny < m && ny >= 0 {
+				if board[nx][ny] == 1 {
+					cnt++
+				}
+			}
+		}
+		return cnt
+	}
+
+	next_state := make([][]int, len(board))
+	for i := range next_state {
+		next_state[i] = make([]int, len(board[0]))
+	}
+
+	for i, row := range board {
+		for j := range row {
+			live_neighbours := neighbours(board, i, j)
+			if board[i][j] == 1 {
+				if live_neighbours == 2 || live_neighbours == 3 {
+					next_state[i][j] = 1
+				} else {
+					next_state[i][j] = 0
+				}
+			} else {
+				if live_neighbours == 3 {
+					next_state[i][j] = 1
+				} else {
+					next_state[i][j] = 0
+				}
+			}
+		}
+	}
+
+	for i, row := range board {
+		for j := range row {
+			board[i][j] = next_state[i][j]
+		}
+	}
+
+}
+
 // 16. 3Sum Closest
 func threeSumClosest(A []int, target int) int {
 	slices.Sort(A)
