@@ -5,6 +5,25 @@ import (
 	"testing"
 )
 
+func TestContainerWithMostWater(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+		expected := 49
+		result := maxArea2(height)
+		if expected != result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("Example 2", func(t *testing.T) {
+		height := []int{1, 1}
+		expected := 1
+		result := maxArea2(height)
+		if expected != result {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestSpiralOrder(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		matrix := [][]int{

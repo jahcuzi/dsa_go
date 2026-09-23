@@ -4,6 +4,22 @@ import (
 	"slices"
 )
 
+func maxArea2(height []int) int {
+	//------^ remove 2 before submitting
+	p, q := 0, len(height)-1
+	max_area := 0
+	for p < q {
+		area := min(height[p], height[q]) * (q - p)
+		max_area = max(max_area, area)
+		if height[p] > height[q] {
+			q--
+		} else {
+			p++
+		}
+	}
+	return max_area
+}
+
 func spiralOrder(matrix [][]int) []int {
 	m, n := len(matrix), len(matrix[0])
 	top, bottom, left, right := 0, m-1, 0, n-1
