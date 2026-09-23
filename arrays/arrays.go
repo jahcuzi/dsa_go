@@ -1,8 +1,35 @@
 package arrays
 
 import (
+	"math"
 	"slices"
 )
+
+// 16. 3Sum Closest
+func threeSumClosest(A []int, target int) int {
+	slices.Sort(A)
+	res := A[0] + A[1] + A[2]
+	for i := range A {
+		p, q := i+1, len(A)-1
+		for p < q {
+			sum := A[i] + A[p] + A[q]
+			if sum == target {
+				return sum
+			}
+
+			if math.Abs(float64(target-res)) > math.Abs(float64(target-sum)) {
+				res = sum
+			}
+
+			if sum > target {
+				q--
+			} else {
+				p++
+			}
+		}
+	}
+	return res
+}
 
 func exist(board [][]byte, word string) bool {
 	var dfs func([][]byte, int, int, int, string) bool

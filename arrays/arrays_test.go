@@ -5,6 +5,26 @@ import (
 	"testing"
 )
 
+func Test3SumClosest(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		nums := []int{-1, 2, 1, -4}
+		target := 1
+		expected := 2
+		result := threeSumClosest(nums, target)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("Example 2", func(t *testing.T) {
+		nums := []int{0, 0, 0}
+		target := 1
+		expected := 0
+		result := threeSumClosest(nums, target)
+		if result != expected {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
 func TestWordSearch(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		board := [][]byte{
