@@ -5,6 +5,59 @@ import (
 	"slices"
 )
 
+func fourSum(nums []int, target int) [][]int {
+	n := len(nums)
+	res := make([][]int, 0, n)
+	if n < 4 {
+		return res
+	}
+	slices.Sort(nums)
+
+	for i := 0; i < n-3; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		for j := i + 1; j < n-2; j++ {
+			if j > i+1 && nums[j] == nums[j-1] {
+				continue
+			}
+			p, q := j+1, n-1
+			for p < q {
+				sum := nums[i] + nums[j] + nums[p] + nums[q]
+				if target == sum {
+					res = append(res, []int{nums[i], nums[j], nums[p], nums[q]})
+					for p < q && nums[p] == nums[p+1] {
+						p++
+					}
+					for p < q && nums[q] == nums[q-1] {
+						q--
+					}
+					p++
+					q--
+				} else if sum < target {
+					p++
+				} else {
+					q--
+				}
+
+			}
+		}
+	}
+	return res
+}
+
+func numPairsDivisibleBy60(time []int) int {
+	nums := make([]int, 60)
+	cnt := 0
+	for _, t := range time {
+		rem := t % 60
+		compl := (60 - rem) % 60
+		cnt += nums[compl]
+		nums[rem]++
+	}
+	return cnt
+}
+
 func gameOfLife(board [][]int) {
 	neighbours := func(board [][]int, i int, j int) int {
 		n, m := len(board), len(board[0])

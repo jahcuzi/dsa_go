@@ -5,6 +5,33 @@ import (
 	"testing"
 )
 
+func TestFourSum(t *testing.T) {
+	t.Run("Example 1", func(t *testing.T) {
+		nums := []int{1, 0, -1, 0, -2, 2}
+		target := 0
+		expected := [][]int{
+			{-2, -1, 1, 2},
+			{-2, 0, 0, 2},
+			{-1, 0, 0, 1},
+		}
+		result := fourSum(nums, target)
+		if !reflect.DeepEqual(expected, result) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+	t.Run("Example 1", func(t *testing.T) {
+		nums := []int{2, 2, 2, 2, 2}
+		target := 8
+		expected := [][]int{
+			{2, 2, 2, 2},
+		}
+		result := fourSum(nums, target)
+		if !reflect.DeepEqual(expected, result) {
+			t.Errorf("Expected %v, Got %v", expected, result)
+		}
+	})
+}
+
 func TestGameOfLife(t *testing.T) {
 	t.Run("Example 1", func(t *testing.T) {
 		board := [][]int{
